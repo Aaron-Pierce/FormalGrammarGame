@@ -1,0 +1,96 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Computer Modern Serif", serif;
+}
+
+
+.nonterminalSymbol[data-v-4d1dce] {
+  transition-property: background-color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+  box-sizing: border-box;
+}
+.nonterminalSymbol.activated[data-v-4d1dce] {
+  background-color: rgb(0, 255, 50, 0.25) !important;
+  cursor: pointer;
+}
+.nonterminalSymbol[data-v-4d1dce]:hover {
+  /* background-color: rgb(0, 0, 50, 0.1); */
+  /* cursor: pointer; */
+}
+
+
+#buildingStringWrapper[data-v-ace1a5] {
+  font-family: "Computer Modern Serif", serif;
+  font-size: 2.5em;
+  box-sizing: border-box;
+  text-align: center;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+.productionButton[data-v-ace1a5] {
+  font-family: "Computer Modern Serif", serif;
+  font-size: 1.5rem;
+
+  background-color: transparent;
+  margin: 0.2em;
+  border: 1px solid black;
+  border-radius: 3px;
+
+  transition: background-color 0.2s ease-in-out;
+}
+.productionButton[data-v-ace1a5]:hover {
+  cursor: pointer;
+  background-color: rgba(100, 100, 100, 0.1);
+}
+.completed[data-v-ace1a5]{
+  transition: background-color 0.75s ease-in-out;
+  background-color: rgba(0, 255, 0, 0.2);
+}
+#levelWrapper[data-v-ace1a5]{
+  width: 80%;
+  text-align: center;
+  padding-bottom: 2em;
+}
+
+
+main[data-v-1b4399] {
+  width: 7.5in;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Computer Modern Serif", serif;
+}
+#header > h1[data-v-1b4399]{
+  margin-bottom: 0;
+}
+#gameArea[data-v-1b4399] {
+  width: 80%;
+  height: 95%;
+  margin-top: 5%;
+}
+#gameWrapper[data-v-1b4399] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=index.64b28163.css.map */

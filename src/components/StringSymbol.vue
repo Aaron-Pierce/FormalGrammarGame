@@ -1,5 +1,12 @@
 <template>
-  <span :class="{ nonterminalSymbol: object.kind == 'Nonterminal', activated: activeIndex == this.index }" @click="activate">
+  <span
+    :class="{
+      nonterminalSymbol: object.kind == 'Nonterminal',
+      activated:
+        (productions[activeProductionIndex] || [])[0] == object.character,
+    }"
+    @click="activate"
+  >
     {{ object.character }}
   </span>
 </template>
@@ -10,16 +17,16 @@
   transition-duration: 0.15s;
   transition-timing-function: ease-in-out;
   box-sizing: border-box;
-
 }
 
 .nonterminalSymbol.activated {
-  background-color: rgb(0, 255, 50, 0.25)!important;
+  background-color: rgb(0, 255, 50, 0.25) !important;
+  cursor: pointer;
 }
 
 .nonterminalSymbol:hover {
-  background-color: rgb(0, 0, 50, 0.1);
-  cursor: pointer;
+  /* background-color: rgb(0, 0, 50, 0.1); */
+  /* cursor: pointer; */
 }
 </style>
 
@@ -32,7 +39,8 @@ export default defineComponent({
 
   props: {
     index: Number,
-    activeIndex: Number
+    activeProductionIndex: Number,
+    productions: Array,
   },
 
   data() {
@@ -41,18 +49,17 @@ export default defineComponent({
 
     return {
       object: parentData.list[this.index || 0],
-      isActive: parentData.activeIndex == this.index
+      isActive: parentData.activeProductionIndex == this.index,
     };
   },
 
-  emits: ["activated"],
+  emits: ["applyProduction"],
 
   methods: {
-    activate(){
-      if(this.object.kind == "Nonterminal"){
-        this.$emit("activated", this.index);
-      }
-    }
+    activate() {
+      console.log("Ran click event");
+      this.$emit("applyProduction", this.index);
+    },
   },
 });
 </script>

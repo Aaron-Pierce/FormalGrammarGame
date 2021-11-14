@@ -42,8 +42,9 @@ function formatProductionStrings(pairs: [string, string][]): [string, SymbolObje
 
 type SentinelForm = {
     list: SymbolObject[],
-    activeIndex: number | null,
-    productions: [string, SymbolObject[]][]
+    activeProductionIndex: number | null,
+    productions: [string, SymbolObject[]][],
+    completed: boolean
 }
 
 export {
