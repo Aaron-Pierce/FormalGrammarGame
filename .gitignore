@@ -1,0 +1,4 @@
+node_modules/
+# Dist is for dev, build is for prod output
+dist/
+.parcel-cache
