@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html --dist-dir ./build"
+    "build": "rm -r build/ && parcel build ./src/index.html --dist-dir ./build --public-url './' "
   },
   "author": "",
   "license": "ISC",
