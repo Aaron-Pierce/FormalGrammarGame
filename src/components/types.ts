@@ -34,16 +34,19 @@ function stringToSymbols(correctlyCapitalizedString: string): SymbolObject[] {
     });
 }
 
-function formatProductionStrings(pairs: [string, string][]): [string, SymbolObject[]][] {
+function formatProductionStrings(pairs: [string, string][]): Production[] {
     return pairs.map(pair => {
         return [pair[0], stringToSymbols(pair[1])]
     })
 }
 
+
+type Production = [string, SymbolObject[]];
+
 type SentinelForm = {
     list: SymbolObject[],
     activeProductionIndex: number | null,
-    productions: [string, SymbolObject[]][],
+    productions: Production[],
     completed: boolean
 }
 
@@ -52,6 +55,7 @@ export {
     NonterminalSymbolObject,
     SymbolObject,
     SentinelForm,
+    Production,
     stringToSymbols,
     formatProductionStrings
 }

@@ -97,6 +97,7 @@ export default defineComponent({
   // type inference enabled
 
   props: ["startstring", "productionstrings", "targetstring"],
+  emits: ["completed"],
 
   data() {
     console.log(this.startstring, this.productionstrings, this.targetstring);
@@ -129,6 +130,7 @@ export default defineComponent({
           if (newString == this.targetstring) {
             console.log("Constructed string successfully");
             this.completed = true;
+            this.$emit("completed");
           }
           this.activeProductionIndex = null;
         }

@@ -140,9 +140,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"kv3uM":[function(require,module,exports) {
+})({"aNzBo":[function(require,module,exports) {
 var HMR_HOST = null;
-var HMR_PORT = 1234;
+var HMR_PORT = 2589;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
 module.bundle.HMR_BUNDLE_ID = "7e229a862f2615e9";
@@ -9567,27 +9567,29 @@ let initialize = ()=>{
     script.render = require('template:./App.vue').render;
     script.__cssModules = require('style:./App.vue').default;
     require('custom:./App.vue').default(script);
-    script.__scopeId = 'data-v-1b4399';
-    script.__file = "/home/aaron/Projects/GrammarGame/src/App.vue";
+    script.__scopeId = 'data-v-3efe13';
+    script.__file = "C:\\Users\\amaxp\\Projects\\FormalGrammarGame\\src\\App.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = '1b4399-hmr';
+    script.__hmrId = '3efe13-hmr';
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord('1b4399-hmr', script)) __VUE_HMR_RUNTIME__.reload('1b4399-hmr', script);
+            if (!__VUE_HMR_RUNTIME__.createRecord('3efe13-hmr', script)) __VUE_HMR_RUNTIME__.reload('3efe13-hmr', script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"script:./App.vue":"1OPnS","template:./App.vue":"d47Zr","custom:./App.vue":"g7p8H","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","style:./App.vue":"vZ5lP"}],"1OPnS":[function(require,module,exports) {
+},{"script:./App.vue":"1OPnS","template:./App.vue":"d47Zr","style:./App.vue":"vZ5lP","custom:./App.vue":"g7p8H","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1OPnS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _vue = require("vue");
 var _levelVue = require("./components/Level.vue");
 var _levelVueDefault = parcelHelpers.interopDefault(_levelVue);
+var _levelSelectVue = require("./components/LevelSelect.vue");
+var _levelSelectVueDefault = parcelHelpers.interopDefault(_levelSelectVue);
 exports.default = _vue.defineComponent({
     // type inference enabled
     data () {
@@ -9595,11 +9597,12 @@ exports.default = _vue.defineComponent({
         };
     },
     components: {
-        Level: _levelVueDefault.default
+        Level: _levelVueDefault.default,
+        LevelSelect: _levelSelectVueDefault.default
     }
 });
 
-},{"vue":"a2RR7","./components/Level.vue":"61Cf2","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"61Cf2":[function(require,module,exports) {
+},{"vue":"a2RR7","./components/Level.vue":"61Cf2","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./components/LevelSelect.vue":"hVBOO"}],"61Cf2":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let script;
@@ -9609,16 +9612,16 @@ let initialize = ()=>{
     script.render = require('template:./Level.vue').render;
     script.__cssModules = require('style:./Level.vue').default;
     require('custom:./Level.vue').default(script);
-    script.__scopeId = 'data-v-ace1a5';
-    script.__file = "/home/aaron/Projects/GrammarGame/src/components/Level.vue";
+    script.__scopeId = 'data-v-8db761';
+    script.__file = "C:\\Users\\amaxp\\Projects\\FormalGrammarGame\\src\\components\\Level.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = 'ace1a5-hmr';
+    script.__hmrId = '8db761-hmr';
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord('ace1a5-hmr', script)) __VUE_HMR_RUNTIME__.reload('ace1a5-hmr', script);
+            if (!__VUE_HMR_RUNTIME__.createRecord('8db761-hmr', script)) __VUE_HMR_RUNTIME__.reload('8db761-hmr', script);
         }, 0);
     });
 }
@@ -9637,6 +9640,9 @@ exports.default = _vue.defineComponent({
         "startstring",
         "productionstrings",
         "targetstring"
+    ],
+    emits: [
+        "completed"
     ],
     data () {
         console.log(this.startstring, this.productionstrings, this.targetstring);
@@ -9663,6 +9669,7 @@ exports.default = _vue.defineComponent({
                     if (newString == this.targetstring) {
                         console.log("Constructed string successfully");
                         this.completed = true;
+                        this.$emit("completed");
                     }
                     this.activeProductionIndex = null;
                 }
@@ -9688,16 +9695,16 @@ let initialize = ()=>{
     script.render = require('template:./StringSymbol.vue').render;
     script.__cssModules = require('style:./StringSymbol.vue').default;
     require('custom:./StringSymbol.vue').default(script);
-    script.__scopeId = 'data-v-4d1dce';
-    script.__file = "/home/aaron/Projects/GrammarGame/src/components/StringSymbol.vue";
+    script.__scopeId = 'data-v-ea750e';
+    script.__file = "C:\\Users\\amaxp\\Projects\\FormalGrammarGame\\src\\components\\StringSymbol.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = '4d1dce-hmr';
+    script.__hmrId = 'ea750e-hmr';
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord('4d1dce-hmr', script)) __VUE_HMR_RUNTIME__.reload('4d1dce-hmr', script);
+            if (!__VUE_HMR_RUNTIME__.createRecord('ea750e-hmr', script)) __VUE_HMR_RUNTIME__.reload('ea750e-hmr', script);
         }, 0);
     });
 }
@@ -9750,7 +9757,7 @@ function render(_ctx, _cache) {
     }, _vue.toDisplayString(_ctx.object.character), 3 /* TEXT, CLASS */ );
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender('4d1dce-hmr', render);
+    __VUE_HMR_RUNTIME__.rerender('ea750e-hmr', render);
 });
 
 },{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"hSWPC":[function() {},{}],"d8pyu":[function(require,module,exports) {
@@ -9805,7 +9812,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render
 );
 var _vue = require("vue");
-const _withScopeId = (n)=>(_vue.pushScopeId("data-v-ace1a5"), n = n(), _vue.popScopeId(), n)
+const _withScopeId = (n)=>(_vue.pushScopeId("data-v-8db761"), n = n(), _vue.popScopeId(), n)
 ;
 const _hoisted_1 = {
     id: "buildingStringWrapper"
@@ -9875,10 +9882,169 @@ function render(_ctx, _cache) {
     ], 2 /* CLASS */ );
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender('ace1a5-hmr', render);
+    __VUE_HMR_RUNTIME__.rerender('8db761-hmr', render);
 });
 
 },{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"lIURU":[function() {},{}],"c76x6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{
+};
+exports.default = (script)=>{
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"hVBOO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require('script:./LevelSelect.vue');
+    if (script.__esModule) script = script.default;
+    script.render = require('template:./LevelSelect.vue').render;
+    script.__cssModules = require('style:./LevelSelect.vue').default;
+    require('custom:./LevelSelect.vue').default(script);
+    script.__scopeId = 'data-v-454c95';
+    script.__file = "C:\\Users\\amaxp\\Projects\\FormalGrammarGame\\src\\components\\LevelSelect.vue";
+};
+initialize();
+if (module.hot) {
+    script.__hmrId = '454c95-hmr';
+    module.hot.accept(()=>{
+        setTimeout(()=>{
+            initialize();
+            if (!__VUE_HMR_RUNTIME__.createRecord('454c95-hmr', script)) __VUE_HMR_RUNTIME__.reload('454c95-hmr', script);
+        }, 0);
+    });
+}
+exports.default = script;
+
+},{"script:./LevelSelect.vue":"85Egg","template:./LevelSelect.vue":"1NCPk","style:./LevelSelect.vue":"lwXtA","custom:./LevelSelect.vue":"3zUeD","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"85Egg":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _vue = require("vue");
+var _levels = require("./levels");
+var _levelVue = require("./Level.vue");
+var _levelVueDefault = parcelHelpers.interopDefault(_levelVue);
+exports.default = _vue.defineComponent({
+    // type inference enabled
+    data () {
+        return {
+            Levels: _levels.Levels,
+            currentLevelIndex: null
+        };
+    },
+    methods: {
+        loadLevel (index) {
+            console.log("loading", index);
+            this.currentLevelIndex = index;
+            console.log("Selected level: ", this.Levels[this.currentLevelIndex]);
+        },
+        completedLevel () {
+            this.currentLevelIndex = null;
+        }
+    },
+    components: {
+        Level: _levelVueDefault.default
+    }
+});
+
+},{"vue":"a2RR7","./levels":"gxbps","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Level.vue":"61Cf2"}],"gxbps":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "Levels", ()=>Levels
+);
+let Level1 = {
+    startString: "S",
+    targetString: "aaabbb",
+    productionStrings: [
+        [
+            "S",
+            "aSb"
+        ],
+        [
+            "S",
+            ""
+        ]
+    ]
+};
+let Level2 = {
+    startString: "S",
+    targetString: "aabababb",
+    productionStrings: [
+        [
+            "S",
+            "aSb"
+        ],
+        [
+            "S",
+            "SS"
+        ],
+        [
+            "S",
+            ""
+        ]
+    ]
+};
+const Levels = [
+    Level1,
+    Level2
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1NCPk":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render
+);
+var _vue = require("vue");
+const _withScopeId = (n)=>(_vue.pushScopeId("data-v-454c95"), n = n(), _vue.popScopeId(), n)
+;
+const _hoisted_1 = {
+    id: "levelSelectWrapper"
+};
+const _hoisted_2 = {
+    id: "levelSelectGrid"
+};
+const _hoisted_3 = [
+    "onClick"
+];
+function render(_ctx, _cache) {
+    const _component_level = _vue.resolveComponent("level");
+    return _vue.openBlock(), _vue.createElementBlock("div", _hoisted_1, [
+        _vue.createElementVNode("div", _hoisted_2, [
+            (_vue.openBlock(true), _vue.createElementBlock(_vue.Fragment, null, _vue.renderList(_ctx.Levels, (level, index)=>{
+                return _vue.withDirectives((_vue.openBlock(), _vue.createElementBlock("div", {
+                    class: "levelButton",
+                    key: index,
+                    onClick: ($event)=>_ctx.loadLevel(index)
+                }, [
+                    _vue.createElementVNode("h1", null, _vue.toDisplayString(index), 1 /* TEXT */ )
+                ], 8 /* PROPS */ , _hoisted_3)), [
+                    [
+                        _vue.vShow,
+                        _ctx.currentLevelIndex === null
+                    ]
+                ]);
+            }), 128 /* KEYED_FRAGMENT */ ))
+        ]),
+        _ctx.currentLevelIndex !== null ? (_vue.openBlock(), _vue.createBlock(_component_level, {
+            key: _ctx.currentLevelIndex,
+            startstring: _ctx.Levels[_ctx.currentLevelIndex].startString,
+            targetstring: _ctx.Levels[_ctx.currentLevelIndex].targetString,
+            productionstrings: _ctx.Levels[_ctx.currentLevelIndex].productionStrings,
+            onCompleted: _ctx.completedLevel
+        }, null, 8 /* PROPS */ , [
+            "startstring",
+            "targetstring",
+            "productionstrings",
+            "onCompleted"
+        ])) : _vue.createCommentVNode("v-if", true)
+    ]);
+}
+if (module.hot) module.hot.accept(()=>{
+    __VUE_HMR_RUNTIME__.rerender('454c95-hmr', render);
+});
+
+},{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"lwXtA":[function() {},{}],"3zUeD":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{
@@ -9892,7 +10058,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render
 );
 var _vue = require("vue");
-const _withScopeId = (n)=>(_vue.pushScopeId("data-v-1b4399"), n = n(), _vue.popScopeId(), n)
+const _withScopeId = (n)=>(_vue.pushScopeId("data-v-3efe13"), n = n(), _vue.popScopeId(), n)
 ;
 const _hoisted_1 = {
     id: "gameArea"
@@ -9908,38 +10074,21 @@ const _hoisted_3 = {
     id: "gameWrapper"
 };
 function render(_ctx, _cache) {
-    const _component_level = _vue.resolveComponent("level");
+    const _component_level_select = _vue.resolveComponent("level-select");
     return _vue.openBlock(), _vue.createElementBlock("main", null, [
         _vue.createElementVNode("div", _hoisted_1, [
             _hoisted_2,
             _vue.createElementVNode("div", _hoisted_3, [
-                _vue.createVNode(_component_level, {
-                    startstring: 'S',
-                    productionstrings: [
-                        [
-                            'S',
-                            'aSb'
-                        ],
-                        [
-                            'S',
-                            'SS'
-                        ],
-                        [
-                            'S',
-                            ''
-                        ], 
-                    ],
-                    targetstring: 'aaabbb'
-                })
+                _vue.createVNode(_component_level_select)
             ])
         ])
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender('1b4399-hmr', render);
+    __VUE_HMR_RUNTIME__.rerender('3efe13-hmr', render);
 });
 
-},{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"g7p8H":[function(require,module,exports) {
+},{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"vZ5lP":[function() {},{}],"g7p8H":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{
@@ -9947,6 +10096,6 @@ let NOOP = ()=>{
 exports.default = (script)=>{
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"vZ5lP":[function() {},{}]},["kv3uM","7PGg5"], "7PGg5", "parcelRequireec63")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["aNzBo","7PGg5"], "7PGg5", "parcelRequireec63")
 
 //# sourceMappingURL=index.2f2615e9.js.map

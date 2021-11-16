@@ -6,15 +6,7 @@
         <hr>
       </div>
       <div id="gameWrapper">
-        <level
-          :startstring="'S'"
-          :productionstrings="[
-            ['S', 'aSb'],
-            ['S', 'SS'],
-            ['S', ''],
-          ]"
-          :targetstring="'aaabbb'"
-        ></level>
+        <level-select></level-select>
       </div>
     </div>
   </main>
@@ -52,6 +44,7 @@ main {
 <script lang="ts">
 import { defineComponent } from "vue";
 import Level from "./components/Level.vue";
+import LevelSelect from "./components/LevelSelect.vue";
 
 export default defineComponent({
   // type inference enabled
@@ -60,6 +53,7 @@ export default defineComponent({
   },
   components: {
     Level,
+    LevelSelect
   },
 });
 </script>
