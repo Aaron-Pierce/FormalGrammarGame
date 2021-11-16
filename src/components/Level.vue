@@ -75,7 +75,7 @@
 }
 
 #levelWrapper{
-  width: 80%;
+  width: 100%;
   text-align: center;
   padding-bottom: 2em;
 }
