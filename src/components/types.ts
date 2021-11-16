@@ -47,7 +47,8 @@ type SentinelForm = {
     list: SymbolObject[],
     activeProductionIndex: number | null,
     productions: Production[],
-    completed: boolean
+    completed: boolean,
+    failed: boolean
 }
 
 export {

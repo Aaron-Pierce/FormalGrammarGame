@@ -140,9 +140,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"60vQQ":[function(require,module,exports) {
+})({"dmwP3":[function(require,module,exports) {
 var HMR_HOST = null;
-var HMR_PORT = 4458;
+var HMR_PORT = 32590;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
 module.bundle.HMR_BUNDLE_ID = "7e229a862f2615e9";
@@ -9642,7 +9642,8 @@ exports.default = _vue.defineComponent({
         "targetstring"
     ],
     emits: [
-        "completed"
+        "completed",
+        "restart"
     ],
     data () {
         console.log(this.startstring, this.productionstrings, this.targetstring);
@@ -9650,7 +9651,8 @@ exports.default = _vue.defineComponent({
             list: _types.stringToSymbols(this.startstring),
             activeProductionIndex: null,
             productions: _types.formatProductionStrings(this.productionstrings),
-            completed: false
+            completed: false,
+            failed: false
         };
     },
     methods: {
@@ -9669,7 +9671,10 @@ exports.default = _vue.defineComponent({
                     if (newString == this.targetstring) {
                         console.log("Constructed string successfully");
                         this.completed = true;
-                        this.$emit("completed");
+                    } else {
+                        let numberOfNonTerminals = this.list.reduce((acc, el)=>acc + (el.kind === "Nonterminal" ? 1 : 0)
+                        , 0);
+                        if (numberOfNonTerminals === 0) this.failed = true;
                     }
                     this.activeProductionIndex = null;
                 }
@@ -9678,6 +9683,12 @@ exports.default = _vue.defineComponent({
         activateProduction (index) {
             console.log("Activating production ", index);
             this.activeProductionIndex = index;
+        },
+        returnToLevelSelect () {
+            this.$emit("completed");
+        },
+        restart () {
+            this.$emit("restart");
         }
     },
     components: {
@@ -9828,7 +9839,7 @@ const _hoisted_5 = {
     id: "targetString"
 };
 const _hoisted_6 = {
-    id: "buttonWrapper"
+    class: "buttonRow"
 };
 const _hoisted_7 = [
     "onClick"
@@ -9838,7 +9849,8 @@ function render(_ctx, _cache) {
     return _vue.openBlock(), _vue.createElementBlock("div", {
         id: "levelWrapper",
         class: _vue.normalizeClass({
-            completed: _ctx.completed
+            completed: _ctx.completed,
+            failed: _ctx.failed
         })
     }, [
         _vue.createElementVNode("div", _hoisted_1, [
@@ -9863,22 +9875,43 @@ function render(_ctx, _cache) {
                 }), 128 /* KEYED_FRAGMENT */ ))
             ])
         ]),
+        _ctx.completed ? (_vue.openBlock(), _vue.createElementBlock("button", {
+            key: 0,
+            id: "returnToLevelSelect",
+            onClick: _cache[2] || (_cache[2] = (...args)=>_ctx.returnToLevelSelect && _ctx.returnToLevelSelect(...args)
+            )
+        }, " Return to Level Select ")) : _vue.createCommentVNode("v-if", true),
+        _ctx.failed ? (_vue.openBlock(), _vue.createElementBlock("button", {
+            key: 1,
+            id: "restart",
+            onClick: _cache[3] || (_cache[3] = (...args)=>_ctx.restart && _ctx.restart(...args)
+            )
+        }, "Restart")) : _vue.createCommentVNode("v-if", true),
         _vue.createElementVNode("div", _hoisted_3, [
             _vue.createElementVNode("p", null, [
                 _hoisted_4,
                 _vue.createElementVNode("span", _hoisted_5, _vue.toDisplayString(_ctx.targetstring), 1 /* TEXT */ )
             ])
         ]),
-        _vue.createElementVNode("div", _hoisted_6, [
-            (_vue.openBlock(true), _vue.createElementBlock(_vue.Fragment, null, _vue.renderList(_ctx.productions, (rule, index)=>{
-                return _vue.openBlock(), _vue.createElementBlock("button", {
-                    key: index,
-                    class: "productionButton",
-                    onClick: ($event)=>_ctx.activateProduction(index)
-                }, _vue.toDisplayString(rule[0] + " ⟶ " + (rule[1].length === 0 ? "λ" : rule[1].reduce((str, el)=>str + el.character
-                , ""))), 9 /* TEXT, PROPS */ , _hoisted_7);
-            }), 128 /* KEYED_FRAGMENT */ ))
-        ])
+        _vue.createCommentVNode(" <div id=\"buttonWrapper\" :style=\"{'grid-template-columns': 'repeat(1fr, ' + new Set(productions.map(e => e[0])).size + ')'}\"> "),
+        _vue.createElementVNode("div", {
+            id: "buttonWrapper",
+            style: _vue.normalizeStyle({
+                'grid-template-columns': 'repeat(1fr, 3)'
+            })
+        }, [
+            _vue.createElementVNode("div", _hoisted_6, [
+                (_vue.openBlock(true), _vue.createElementBlock(_vue.Fragment, null, _vue.renderList(_ctx.productions, (rule, index)=>{
+                    return _vue.openBlock(), _vue.createElementBlock("button", {
+                        class: "productionButton",
+                        onClick: ($event)=>_ctx.activateProduction(index)
+                        ,
+                        key: rule[0] + index
+                    }, _vue.toDisplayString(rule[0] + " ⟶ " + (rule[1].length === 0 ? "λ" : rule[1].reduce((str, el)=>str + el.character
+                    , ""))), 9 /* TEXT, PROPS */ , _hoisted_7);
+                }), 128 /* KEYED_FRAGMENT */ ))
+            ])
+        ], 4 /* STYLE */ )
     ], 2 /* CLASS */ );
 }
 if (module.hot) module.hot.accept(()=>{
@@ -9941,6 +9974,14 @@ exports.default = _vue.defineComponent({
         },
         completedLevel () {
             this.currentLevelIndex = null;
+        },
+        restartLevel () {
+            if (this.currentLevelIndex === null) return;
+            let oldValue = this.currentLevelIndex + 0;
+            this.currentLevelIndex = null;
+            requestAnimationFrame(()=>{
+                this.currentLevelIndex = oldValue;
+            });
         }
     },
     components: {
@@ -9985,9 +10026,105 @@ let Level2 = {
         ]
     ]
 };
+let Level3 = {
+    startString: "SSS",
+    targetString: "hello",
+    productionStrings: [
+        [
+            "S",
+            "o"
+        ],
+        [
+            "S",
+            "el"
+        ],
+        [
+            "S",
+            "hSl"
+        ],
+        [
+            "S",
+            ""
+        ]
+    ]
+};
+let Level4 = {
+    startString: "S",
+    targetString: "world",
+    productionStrings: [
+        [
+            "S",
+            "wSd"
+        ],
+        [
+            "S",
+            "oSl"
+        ],
+        [
+            "S",
+            "Srl"
+        ],
+        [
+            "S",
+            "o"
+        ]
+    ]
+};
+let Level5 = {
+    startString: "S",
+    targetString: "apple",
+    productionStrings: [
+        [
+            "S",
+            "ap"
+        ],
+        [
+            "S",
+            "Sp"
+        ],
+        [
+            "S",
+            "SS"
+        ],
+        [
+            "S",
+            "le"
+        ]
+    ]
+};
+let Level6 = {
+    startString: "SS",
+    targetString: "minimum",
+    productionStrings: [
+        [
+            "S",
+            "mAm"
+        ],
+        [
+            "S",
+            "Bm"
+        ],
+        [
+            "A",
+            "iBi"
+        ],
+        [
+            "B",
+            "n"
+        ],
+        [
+            "B",
+            "u"
+        ], 
+    ]
+};
 const Levels = [
     Level1,
-    Level2
+    Level3,
+    Level4,
+    Level5,
+    Level2,
+    Level6, 
 ];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1NCPk":[function(require,module,exports) {
@@ -10031,12 +10168,14 @@ function render(_ctx, _cache) {
             startstring: _ctx.Levels[_ctx.currentLevelIndex].startString,
             targetstring: _ctx.Levels[_ctx.currentLevelIndex].targetString,
             productionstrings: _ctx.Levels[_ctx.currentLevelIndex].productionStrings,
-            onCompleted: _ctx.completedLevel
+            onCompleted: _ctx.completedLevel,
+            onRestart: _ctx.restartLevel
         }, null, 8 /* PROPS */ , [
             "startstring",
             "targetstring",
             "productionstrings",
-            "onCompleted"
+            "onCompleted",
+            "onRestart"
         ])) : _vue.createCommentVNode("v-if", true)
     ]);
 }
@@ -10096,6 +10235,6 @@ let NOOP = ()=>{
 exports.default = (script)=>{
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["60vQQ","7PGg5"], "7PGg5", "parcelRequireec63")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["dmwP3","7PGg5"], "7PGg5", "parcelRequireec63")
 
 //# sourceMappingURL=index.2f2615e9.js.map

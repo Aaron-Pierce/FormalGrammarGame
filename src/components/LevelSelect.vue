@@ -19,6 +19,7 @@
       :targetstring="Levels[currentLevelIndex].targetString"
       :productionstrings="Levels[currentLevelIndex].productionStrings"
       @completed="completedLevel"
+      @restart="restartLevel"
     >  
     </level>
   </div>
@@ -93,6 +94,14 @@ export default defineComponent({
     },
     completedLevel(){
       this.currentLevelIndex = null;
+    },
+    restartLevel(){
+      if(this.currentLevelIndex === null) return;
+      let oldValue = this.currentLevelIndex + 0;
+      this.currentLevelIndex = null;
+      requestAnimationFrame(() => {
+        this.currentLevelIndex = oldValue;
+      });
     }
   },
 

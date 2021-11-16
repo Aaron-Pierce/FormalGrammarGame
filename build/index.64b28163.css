@@ -43,7 +43,20 @@ html {
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
-.productionButton[data-v-8db761] {
+.buttonShield[data-v-8db761] {
+  display: inline-block;
+}
+#buttonWrapper[data-v-8db761] {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.buttonRow[data-v-8db761] {
+  display: flex;
+  flex-direction: column;
+}
+button[data-v-8db761] {
   font-family: "Computer Modern Serif", serif;
   font-size: 1.5rem;
 
@@ -54,15 +67,19 @@ html {
 
   transition: background-color 0.2s ease-in-out;
 }
-.productionButton[data-v-8db761]:hover {
+button[data-v-8db761]:hover {
   cursor: pointer;
   background-color: rgba(100, 100, 100, 0.1);
 }
-.completed[data-v-8db761]{
+.completed[data-v-8db761] {
   transition: background-color 0.75s ease-in-out;
   background-color: rgba(0, 255, 0, 0.2);
 }
-#levelWrapper[data-v-8db761]{
+.failed[data-v-8db761] {
+  background-color: rgba(255, 0, 0, 0.2);
+  transition: background-color 0.75s ease-in-out;
+}
+#levelWrapper[data-v-8db761] {
   width: 100%;
   text-align: center;
   padding-bottom: 2em;

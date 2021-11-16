@@ -1,5 +1,5 @@
 <template>
-  <div id="levelWrapper" :class="{completed: completed}">
+  <div id="levelWrapper" :class="{ completed: completed, failed: failed }">
     <div id="buildingStringWrapper">
       <p id="buildingString">
         <string-symbol
@@ -12,27 +12,42 @@
         ></string-symbol>
       </p>
     </div>
+    <button
+      id="returnToLevelSelect"
+      v-if="completed"
+      @click="returnToLevelSelect"
+    >
+      Return to Level Select
+    </button>
+    <button id="restart" v-if="failed" @click="restart">Restart</button>
     <div id="targetStringWrapper">
       <p>
         Construct: <span id="targetString">{{ targetstring }}</span>
       </p>
     </div>
-    <div id="buttonWrapper">
-      <button
-        v-for="(rule, index) in productions"
-        :key="index"
-        class="productionButton"
-        @click="activateProduction(index)"
+    <!-- <div id="buttonWrapper" :style="{'grid-template-columns': 'repeat(1fr, ' + new Set(productions.map(e => e[0])).size + ')'}"> -->
+    <div
+      id="buttonWrapper"
+      :style="{ 'grid-template-columns': 'repeat(1fr, 3)' }"
+    >
+      <div
+        class="buttonRow"
       >
-        {{
-          rule[0] +
-          " ⟶ " +
-          (rule[1].length === 0
-            ? "λ"
-            : rule[1].reduce((str, el) => str + el.character, ""))
-        }}
-      </button>
+        <button 
+        class="productionButton" 
+        @click="activateProduction(index)"
+        v-for="(rule, index) in productions"
+        :key="rule[0]+index">
+          {{
+            rule[0] +
+            " ⟶ " +
+            (rule[1].length === 0
+              ? "λ"
+              : rule[1].reduce((str, el) => str + el.character, ""))
+          }}
+        </button>
     </div>
+  </div>
   </div>
 </template>
 
@@ -52,7 +67,23 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.productionButton {
+.buttonShield {
+  display: inline-block;
+}
+
+#buttonWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttonRow {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
   font-family: "Computer Modern Serif", serif;
   font-size: 1.5rem;
 
@@ -64,17 +95,22 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.productionButton:hover {
+button:hover {
   cursor: pointer;
   background-color: rgba(100, 100, 100, 0.1);
 }
 
-.completed{
+.completed {
   transition: background-color 0.75s ease-in-out;
   background-color: rgba(0, 255, 0, 0.2);
 }
 
-#levelWrapper{
+.failed {
+  background-color: rgba(255, 0, 0, 0.2);
+  transition: background-color 0.75s ease-in-out;
+}
+
+#levelWrapper {
   width: 100%;
   text-align: center;
   padding-bottom: 2em;
@@ -82,7 +118,7 @@
 </style>
 
 <script lang="ts">
-import { defineComponent} from "vue";
+import { defineComponent } from "vue";
 import StringSymbol from "./StringSymbol.vue";
 import {
   formatProductionStrings,
@@ -92,12 +128,11 @@ import {
   TerminalSymbolObject,
 } from "./types";
 
-
 export default defineComponent({
   // type inference enabled
 
   props: ["startstring", "productionstrings", "targetstring"],
-  emits: ["completed"],
+  emits: ["completed", "restart"],
 
   data() {
     console.log(this.startstring, this.productionstrings, this.targetstring);
@@ -106,6 +141,7 @@ export default defineComponent({
       activeProductionIndex: null,
       productions: formatProductionStrings(this.productionstrings),
       completed: false,
+      failed: false,
     } as SentinelForm;
   },
   methods: {
@@ -130,7 +166,14 @@ export default defineComponent({
           if (newString == this.targetstring) {
             console.log("Constructed string successfully");
             this.completed = true;
-            this.$emit("completed");
+          } else {
+            let numberOfNonTerminals = this.list.reduce(
+              (acc, el) => acc + (el.kind === "Nonterminal" ? 1 : 0),
+              0
+            );
+            if (numberOfNonTerminals === 0) {
+              this.failed = true;
+            }
           }
           this.activeProductionIndex = null;
         }
@@ -141,6 +184,14 @@ export default defineComponent({
       console.log("Activating production ", index);
 
       this.activeProductionIndex = index;
+    },
+
+    returnToLevelSelect() {
+      this.$emit("completed");
+    },
+
+    restart() {
+      this.$emit("restart");
     },
   },
   components: {
