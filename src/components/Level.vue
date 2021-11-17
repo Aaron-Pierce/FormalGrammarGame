@@ -101,6 +101,7 @@
 .buttonRow {
   display: flex;
   flex-direction: column;
+  font-size: 1rem;
 }
 
 .dangerHover:hover{
