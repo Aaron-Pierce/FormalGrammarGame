@@ -84,6 +84,10 @@
   margin-top: 2em;
 }
 
+#linkRow button{
+  font-size: 1.2rem;
+}
+
 #linkRowDivider{
   margin-top: 2em;
 }
