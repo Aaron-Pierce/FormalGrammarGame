@@ -131,6 +131,24 @@ let Level10: LevelObject = {
 }
 
 
+let Level11: LevelObject = {
+    startString: "AXB",
+    targetString: "1111000001111",
+    productionStrings: [
+        ["A", "1B1"],
+        ["A", "0B0"],
+        ["A", "B"],
+        ["A", "0"],
+        ["X", "1"],
+        ["X", "0"],
+        ["B", "1A0"],
+        ["B", "0A1"],
+        ["B", "1"],
+    ]
+}
+
+
+
 const Levels = [
     Level1,
     Level3,
@@ -142,6 +160,7 @@ const Levels = [
     Level8,
     Level9,
     Level10,
+    Level11
 ]
 
 export {
