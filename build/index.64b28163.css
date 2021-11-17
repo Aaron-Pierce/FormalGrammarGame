@@ -117,6 +117,12 @@ button[data-v-8db761]:hover {
 .completed[data-v-454c95]{
   background-color: rgba(0, 255, 0, 0.2);
 }
+@media only screen and (max-width: 7in) {
+#levelSelectGrid[data-v-454c95]{
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+}
 
 
 
@@ -142,6 +148,11 @@ main[data-v-3efe13] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+@media only screen and (max-width: 7in) {
+main[data-v-3efe13]{
+    width: 90vw;
+}
 }
 
 /*# sourceMappingURL=index.64b28163.css.map */

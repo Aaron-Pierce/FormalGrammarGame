@@ -67,6 +67,13 @@
   background-color: rgba(0, 255, 0, 0.2);
 }
 
+@media only screen and (max-width: 7in) {
+  #levelSelectGrid{
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
 </style>
 
 <script lang="ts">

@@ -23,6 +23,7 @@ main {
   font-family: "Computer Modern Serif", serif;
 }
 
+
 #header > h1{
   margin-bottom: 0;
 }
@@ -38,6 +39,12 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (max-width: 7in) {
+  main{
+    width: 90vw;
+  }
 }
 </style>
 
