@@ -52,6 +52,7 @@
         </span>
       </div>
     </div>
+      <p v-if="levelIndex === 0"> Click a button to activate a production rule, then click an appropriate symbol to apply it to</p>
     <hr id="linkRowDivider" />
     <div id="linkRow">
       <button @click="returnToLevelSelect" class="dangerHover">Return To Level Select</button>
