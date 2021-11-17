@@ -73,6 +73,64 @@ let Level6: LevelObject = {
 }
 
 
+let Level7: LevelObject = {
+    startString: "E",
+    targetString: "(3x+4)*(4x+3)",
+    productionStrings: [
+        ["E", "EOE"],
+        ["E", "(E)"],
+        ["O", "+"],
+        ["O", "*"],
+        ["E", "3"],
+        ["E", "4"],
+        ["E", "V"],
+        ["V", "EV"],
+        ["V", "x"]
+    ]
+}
+
+let Level8: LevelObject = {
+    startString: "aA",
+    targetString: "aaaaaacaaa",
+    productionStrings: [
+        ["A", "aBa"],
+        ["B", "aA"],
+        ["B", "aB"],
+        ["B", "c"]
+    ]
+}
+
+
+let Level9: LevelObject = {
+    startString: "A",
+    targetString: "cabcab",
+    productionStrings: [
+        ["A", "aB"],
+        ["A", "Cb"],
+        ["B", "bC"],
+        ["B", "Ac"],
+        ["C", "cA"],
+        ["C", "Ba"],
+        ["A", ""],
+        ["B", ""],
+        ["C", ""]
+    ]
+}
+
+
+
+let Level10: LevelObject = {
+    startString: "S",
+    targetString: "ababababa",
+    productionStrings: [
+        ["S", "ESE"],
+        ["E", "SES"],
+        ["S", "a"],
+        ["E", "b"],
+    ]
+}
+
+
 const Levels = [
     Level1,
     Level3,
@@ -80,6 +138,10 @@ const Levels = [
     Level5,
     Level2,
     Level6,
+    Level7,
+    Level8,
+    Level9,
+    Level10,
 ]
 
 export {

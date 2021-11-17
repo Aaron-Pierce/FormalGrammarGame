@@ -114,6 +114,9 @@ button[data-v-8db761]:hover {
   cursor: pointer;
   background-color: rgba(0, 255, 0, 0.2);
 }
+.completed[data-v-454c95]{
+  background-color: rgba(0, 255, 0, 0.2);
+}
 
 
 

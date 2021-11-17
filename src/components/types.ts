@@ -26,7 +26,7 @@ interface SymbolObject {
 
 function stringToSymbols(correctlyCapitalizedString: string): SymbolObject[] {
     return correctlyCapitalizedString.split("").map(e => {
-        if(e.toUpperCase() === e){
+        if(new RegExp('^[A-Z]$').test(e)){
             return new NonterminalSymbolObject(e);
         }else{
             return new TerminalSymbolObject(e);

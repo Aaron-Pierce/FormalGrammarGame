@@ -7,6 +7,7 @@
       :key="index"
       @click="loadLevel(index)"
       v-show="currentLevelIndex === null"
+      :class="{completed: isComplete(index)}"
       >
         <h1>{{index}}</h1>
       </div>
@@ -18,6 +19,7 @@
       :startstring="Levels[currentLevelIndex].startString"
       :targetstring="Levels[currentLevelIndex].targetString"
       :productionstrings="Levels[currentLevelIndex].productionStrings"
+      :levelIndex="currentLevelIndex"
       @completed="completedLevel"
       @restart="restartLevel"
     >  
@@ -58,6 +60,10 @@
 
 .levelButton:hover{
   cursor: pointer;
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+.completed{
   background-color: rgba(0, 255, 0, 0.2);
 }
 
@@ -102,6 +108,9 @@ export default defineComponent({
       requestAnimationFrame(() => {
         this.currentLevelIndex = oldValue;
       });
+    },
+    isComplete(index: number){
+      return JSON.parse(localStorage.getItem("completedLevels") || "{}")[index] === true;
     }
   },
 

@@ -32,22 +32,22 @@
     >
       <div
         class="buttonRow"
+        v-for="char in new Set(productions.map((e) => e[0]))"
+        :key="char"
       >
-        <button 
-        class="productionButton" 
-        @click="activateProduction(index)"
-        v-for="(rule, index) in productions"
-        :key="rule[0]+index">
-          {{
-            rule[0] +
-            " ⟶ " +
-            (rule[1].length === 0
-              ? "λ"
-              : rule[1].reduce((str, el) => str + el.character, ""))
-          }}
-        </button>
+        <span v-for="(rule, index) in productions" :key="rule[0] + index">
+          <button v-if="rule[0] === char"  class="productionButton" @click="activateProduction(index)">
+            {{
+              rule[0] +
+              " ⟶ " +
+              (rule[1].length === 0
+                ? "λ"
+                : rule[1].reduce((str, el) => str + el.character, ""))
+            }}
+          </button>
+        </span>
+      </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -131,7 +131,7 @@ import {
 export default defineComponent({
   // type inference enabled
 
-  props: ["startstring", "productionstrings", "targetstring"],
+  props: ["startstring", "productionstrings", "targetstring", "levelIndex"],
   emits: ["completed", "restart"],
 
   data() {
@@ -188,6 +188,9 @@ export default defineComponent({
 
     returnToLevelSelect() {
       this.$emit("completed");
+      let parsedJson = JSON.parse(localStorage.getItem("completedLevels") || "{}");
+      parsedJson[this.levelIndex] = true;
+      localStorage.setItem("completedLevels", JSON.stringify(parsedJson));
     },
 
     restart() {
