@@ -2,7 +2,7 @@
   <main>
     <div id="gameArea">
       <div id="header">
-        <h1>The Grammar Game</h1>
+        <h1>The Formal Grammar Game</h1>
         <hr>
       </div>
       <div id="gameWrapper">
