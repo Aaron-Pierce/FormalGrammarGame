@@ -147,6 +147,22 @@ let Level11: LevelObject = {
     ]
 }
 
+let Level12: LevelObject = {
+    startString: "S",
+    targetString: "baaaab",
+    productionStrings: [
+        ["S", "SS"],
+        ["S", "A"],
+        ["S", "B"],
+        ["S", ""],
+        ["A", "aAb"],
+        ["A", "bAa"],
+        ["A", "S"],
+        ["B", "aBa"],
+        ["B", "bBb"],
+        ["B", "S"],
+    ]
+}
 
 
 const Levels = [
@@ -160,7 +176,8 @@ const Levels = [
     Level8,
     Level9,
     Level10,
-    Level11
+    Level11,
+    Level12,
 ]
 
 export {

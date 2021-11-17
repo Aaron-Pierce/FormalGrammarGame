@@ -140,9 +140,9 @@
       this[globalName] = mainExports;
     }
   }
-})({"kCSdl":[function(require,module,exports) {
+})({"kv3uM":[function(require,module,exports) {
 var HMR_HOST = null;
-var HMR_PORT = 10744;
+var HMR_PORT = 1234;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "4a236f9275d0a351";
 module.bundle.HMR_BUNDLE_ID = "7e229a862f2615e9";
@@ -9567,22 +9567,22 @@ let initialize = ()=>{
     script.render = require('template:./App.vue').render;
     script.__cssModules = require('style:./App.vue').default;
     require('custom:./App.vue').default(script);
-    script.__scopeId = 'data-v-3efe13';
-    script.__file = "C:\\Users\\amaxp\\Projects\\FormalGrammarGame\\src\\App.vue";
+    script.__scopeId = 'data-v-1b4399';
+    script.__file = "/home/aaron/Projects/GrammarGame/src/App.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = '3efe13-hmr';
+    script.__hmrId = '1b4399-hmr';
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord('3efe13-hmr', script)) __VUE_HMR_RUNTIME__.reload('3efe13-hmr', script);
+            if (!__VUE_HMR_RUNTIME__.createRecord('1b4399-hmr', script)) __VUE_HMR_RUNTIME__.reload('1b4399-hmr', script);
         }, 0);
     });
 }
 exports.default = script;
 
-},{"script:./App.vue":"1OPnS","template:./App.vue":"d47Zr","style:./App.vue":"vZ5lP","custom:./App.vue":"g7p8H","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1OPnS":[function(require,module,exports) {
+},{"script:./App.vue":"1OPnS","template:./App.vue":"d47Zr","custom:./App.vue":"g7p8H","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","style:./App.vue":"vZ5lP"}],"1OPnS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _vue = require("vue");
@@ -9612,16 +9612,16 @@ let initialize = ()=>{
     script.render = require('template:./Level.vue').render;
     script.__cssModules = require('style:./Level.vue').default;
     require('custom:./Level.vue').default(script);
-    script.__scopeId = 'data-v-8db761';
-    script.__file = "C:\\Users\\amaxp\\Projects\\FormalGrammarGame\\src\\components\\Level.vue";
+    script.__scopeId = 'data-v-ace1a5';
+    script.__file = "/home/aaron/Projects/GrammarGame/src/components/Level.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = '8db761-hmr';
+    script.__hmrId = 'ace1a5-hmr';
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord('8db761-hmr', script)) __VUE_HMR_RUNTIME__.reload('8db761-hmr', script);
+            if (!__VUE_HMR_RUNTIME__.createRecord('ace1a5-hmr', script)) __VUE_HMR_RUNTIME__.reload('ace1a5-hmr', script);
         }, 0);
     });
 }
@@ -9710,16 +9710,16 @@ let initialize = ()=>{
     script.render = require('template:./StringSymbol.vue').render;
     script.__cssModules = require('style:./StringSymbol.vue').default;
     require('custom:./StringSymbol.vue').default(script);
-    script.__scopeId = 'data-v-ea750e';
-    script.__file = "C:\\Users\\amaxp\\Projects\\FormalGrammarGame\\src\\components\\StringSymbol.vue";
+    script.__scopeId = 'data-v-4d1dce';
+    script.__file = "/home/aaron/Projects/GrammarGame/src/components/StringSymbol.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = 'ea750e-hmr';
+    script.__hmrId = '4d1dce-hmr';
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord('ea750e-hmr', script)) __VUE_HMR_RUNTIME__.reload('ea750e-hmr', script);
+            if (!__VUE_HMR_RUNTIME__.createRecord('4d1dce-hmr', script)) __VUE_HMR_RUNTIME__.reload('4d1dce-hmr', script);
         }, 0);
     });
 }
@@ -9772,7 +9772,7 @@ function render(_ctx, _cache) {
     }, _vue.toDisplayString(_ctx.object.character), 3 /* TEXT, CLASS */ );
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender('ea750e-hmr', render);
+    __VUE_HMR_RUNTIME__.rerender('4d1dce-hmr', render);
 });
 
 },{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"hSWPC":[function() {},{}],"d8pyu":[function(require,module,exports) {
@@ -9827,7 +9827,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render
 );
 var _vue = require("vue");
-const _withScopeId = (n)=>(_vue.pushScopeId("data-v-8db761"), n = n(), _vue.popScopeId(), n)
+const _withScopeId = (n)=>(_vue.pushScopeId("data-v-ace1a5"), n = n(), _vue.popScopeId(), n)
 ;
 const _hoisted_1 = {
     id: "buildingStringWrapper"
@@ -9925,7 +9925,7 @@ function render(_ctx, _cache) {
     ], 2 /* CLASS */ );
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender('8db761-hmr', render);
+    __VUE_HMR_RUNTIME__.rerender('ace1a5-hmr', render);
 });
 
 },{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"lIURU":[function() {},{}],"c76x6":[function(require,module,exports) {
@@ -9946,16 +9946,16 @@ let initialize = ()=>{
     script.render = require('template:./LevelSelect.vue').render;
     script.__cssModules = require('style:./LevelSelect.vue').default;
     require('custom:./LevelSelect.vue').default(script);
-    script.__scopeId = 'data-v-454c95';
-    script.__file = "C:\\Users\\amaxp\\Projects\\FormalGrammarGame\\src\\components\\LevelSelect.vue";
+    script.__scopeId = 'data-v-7fed13';
+    script.__file = "/home/aaron/Projects/GrammarGame/src/components/LevelSelect.vue";
 };
 initialize();
 if (module.hot) {
-    script.__hmrId = '454c95-hmr';
+    script.__hmrId = '7fed13-hmr';
     module.hot.accept(()=>{
         setTimeout(()=>{
             initialize();
-            if (!__VUE_HMR_RUNTIME__.createRecord('454c95-hmr', script)) __VUE_HMR_RUNTIME__.reload('454c95-hmr', script);
+            if (!__VUE_HMR_RUNTIME__.createRecord('7fed13-hmr', script)) __VUE_HMR_RUNTIME__.reload('7fed13-hmr', script);
         }, 0);
     });
 }
@@ -10002,7 +10002,7 @@ exports.default = _vue.defineComponent({
     }
 });
 
-},{"vue":"a2RR7","./levels":"gxbps","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Level.vue":"61Cf2"}],"gxbps":[function(require,module,exports) {
+},{"vue":"a2RR7","./levels":"gxbps","./Level.vue":"61Cf2","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"gxbps":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Levels", ()=>Levels
@@ -10301,6 +10301,52 @@ let Level11 = {
         ], 
     ]
 };
+let Level12 = {
+    startString: "S",
+    targetString: "baaaab",
+    productionStrings: [
+        [
+            "S",
+            "SS"
+        ],
+        [
+            "S",
+            "A"
+        ],
+        [
+            "S",
+            "B"
+        ],
+        [
+            "S",
+            ""
+        ],
+        [
+            "A",
+            "aAb"
+        ],
+        [
+            "A",
+            "bAa"
+        ],
+        [
+            "A",
+            "S"
+        ],
+        [
+            "B",
+            "aBa"
+        ],
+        [
+            "B",
+            "bBb"
+        ],
+        [
+            "B",
+            "S"
+        ], 
+    ]
+};
 const Levels = [
     Level1,
     Level3,
@@ -10312,7 +10358,8 @@ const Levels = [
     Level8,
     Level9,
     Level10,
-    Level11
+    Level11,
+    Level12, 
 ];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"1NCPk":[function(require,module,exports) {
@@ -10321,7 +10368,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render
 );
 var _vue = require("vue");
-const _withScopeId = (n)=>(_vue.pushScopeId("data-v-454c95"), n = n(), _vue.popScopeId(), n)
+const _withScopeId = (n)=>(_vue.pushScopeId("data-v-7fed13"), n = n(), _vue.popScopeId(), n)
 ;
 const _hoisted_1 = {
     id: "levelSelectWrapper"
@@ -10375,7 +10422,7 @@ function render(_ctx, _cache) {
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender('454c95-hmr', render);
+    __VUE_HMR_RUNTIME__.rerender('7fed13-hmr', render);
 });
 
 },{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"lwXtA":[function() {},{}],"3zUeD":[function(require,module,exports) {
@@ -10392,7 +10439,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render
 );
 var _vue = require("vue");
-const _withScopeId = (n)=>(_vue.pushScopeId("data-v-3efe13"), n = n(), _vue.popScopeId(), n)
+const _withScopeId = (n)=>(_vue.pushScopeId("data-v-1b4399"), n = n(), _vue.popScopeId(), n)
 ;
 const _hoisted_1 = {
     id: "gameArea"
@@ -10419,10 +10466,10 @@ function render(_ctx, _cache) {
     ]);
 }
 if (module.hot) module.hot.accept(()=>{
-    __VUE_HMR_RUNTIME__.rerender('3efe13-hmr', render);
+    __VUE_HMR_RUNTIME__.rerender('1b4399-hmr', render);
 });
 
-},{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"vZ5lP":[function() {},{}],"g7p8H":[function(require,module,exports) {
+},{"vue":"a2RR7","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"g7p8H":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{
@@ -10430,6 +10477,6 @@ let NOOP = ()=>{
 exports.default = (script)=>{
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["kCSdl","7PGg5"], "7PGg5", "parcelRequireec63")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"vZ5lP":[function() {},{}]},["kv3uM","7PGg5"], "7PGg5", "parcelRequireec63")
 
 //# sourceMappingURL=index.2f2615e9.js.map
