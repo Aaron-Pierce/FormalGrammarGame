@@ -1,15 +1,14 @@
 <template>
   <div id="levelSelectWrapper">
-    <div id="levelSelectGrid">
-      <div 
-      class="levelButton"
-      v-for="(level, index) in Levels"
-      :key="index"
-      @click="loadLevel(index)"
-      v-show="currentLevelIndex === null"
-      :class="{completed: isComplete(index)}"
+    <div v-if="currentLevelIndex === null" id="levelSelectGrid">
+      <div
+        class="levelButton"
+        v-for="(level, index) in Levels"
+        :key="index"
+        @click="loadLevel(index)"
+        :class="{ completed: isComplete(index) }"
       >
-        <h1>{{index}}</h1>
+        <h1>{{ index }}</h1>
       </div>
     </div>
 
@@ -22,14 +21,13 @@
       :levelIndex="currentLevelIndex"
       @completed="completedLevel"
       @restart="restartLevel"
-    >  
+    >
     </level>
   </div>
 </template>
 
 <style scoped>
-
-#levelSelectWrapper{
+#levelSelectWrapper {
   width: 100%;
 }
 
@@ -41,7 +39,7 @@
   column-gap: 1em;
 }
 
-.levelButton{
+.levelButton {
   border: 2px solid black;
   border-radius: 5px;
   text-align: center;
@@ -51,78 +49,77 @@
 .levelButton .name {
   margin-bottom: 0.25em;
   margin-top: 0.25em;
-  padding-bottom: 0;   
+  padding-bottom: 0;
 }
 
-.levelButton hr{
+.levelButton hr {
   margin-top: 0;
 }
 
-.levelButton:hover{
+.levelButton:hover {
   cursor: pointer;
   background-color: rgba(0, 255, 0, 0.2);
 }
 
-.completed{
+.completed {
   background-color: rgba(0, 255, 0, 0.2);
 }
 
 @media only screen and (max-width: 7in) {
-  #levelSelectGrid{
+  #levelSelectGrid {
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-
 </style>
 
 <script lang="ts">
-import { defineComponent} from "vue";
-import {LevelObject, Levels} from "./levels";
+import { defineComponent } from "vue";
+import { LevelObject, Levels } from "./levels";
 import Level from "./Level.vue";
 
-
 type LevelSelectData = {
-  Levels: LevelObject[],
-  currentLevelIndex: number | null
-}
+  Levels: LevelObject[];
+  currentLevelIndex: number | null;
+};
 
 export default defineComponent({
   // type inference enabled
-
 
   data() {
     return {
       Levels: Levels,
       currentLevelIndex: null,
-
     } as LevelSelectData;
   },
 
   methods: {
-    loadLevel(index: number){
+    loadLevel(index: number) {
       console.log("loading", index);
       this.currentLevelIndex = index;
-      console.log("Selected level: ", this.Levels[this.currentLevelIndex])
+      console.log("Selected level: ", this.Levels[this.currentLevelIndex]);
     },
-    completedLevel(){
+    completedLevel() {
       this.currentLevelIndex = null;
     },
-    restartLevel(){
-      if(this.currentLevelIndex === null) return;
+    restartLevel() {
+      if (this.currentLevelIndex === null) return;
       let oldValue = this.currentLevelIndex + 0;
       this.currentLevelIndex = null;
       requestAnimationFrame(() => {
         this.currentLevelIndex = oldValue;
       });
     },
-    isComplete(index: number){
-      return JSON.parse(localStorage.getItem("completedLevels") || "{}")[index] === true;
-    }
+    isComplete(index: number) {
+      return (
+        JSON.parse(localStorage.getItem("completedLevels") || "{}")[index] ===
+        true
+      );
+    },
   },
 
   components: {
-    Level
-  }
+    Level,
+  },
 });
 </script>

@@ -36,7 +36,11 @@
         :key="char"
       >
         <span v-for="(rule, index) in productions" :key="rule[0] + index">
-          <button v-if="rule[0] === char"  class="productionButton" @click="activateProduction(index)">
+          <button
+            v-if="rule[0] === char"
+            class="productionButton"
+            @click="activateProduction(index)"
+          >
             {{
               rule[0] +
               " ⟶ " +
@@ -47,6 +51,11 @@
           </button>
         </span>
       </div>
+    </div>
+    <hr id="linkRowDivider" />
+    <div id="linkRow">
+      <button @click="returnToLevelSelect" class="dangerHover">Return To Level Select</button>
+      <button @click="promptRestart" class="dangerHover">Restart</button>
     </div>
   </div>
 </template>
@@ -67,6 +76,17 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+#linkRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 2em;
+}
+
+#linkRowDivider{
+  margin-top: 2em;
+}
+
 .buttonShield {
   display: inline-block;
 }
@@ -81,6 +101,11 @@
 .buttonRow {
   display: flex;
   flex-direction: column;
+}
+
+.dangerHover:hover{
+  background-color: rgba(255, 0, 0, 0.2);
+  transition: background-color 0.15s ease-in-out;
 }
 
 button {
@@ -136,6 +161,8 @@ export default defineComponent({
 
   data() {
     console.log(this.startstring, this.productionstrings, this.targetstring);
+    console.log("Mounted");
+
     return {
       list: stringToSymbols(this.startstring),
       activeProductionIndex: null,
@@ -166,6 +193,13 @@ export default defineComponent({
           if (newString == this.targetstring) {
             console.log("Constructed string successfully");
             this.completed = true;
+
+            let parsedJson = JSON.parse(
+              localStorage.getItem("completedLevels") || "{}"
+            );
+            parsedJson[this.levelIndex] = true;
+            localStorage.setItem("completedLevels", JSON.stringify(parsedJson));
+
           } else {
             let numberOfNonTerminals = this.list.reduce(
               (acc, el) => acc + (el.kind === "Nonterminal" ? 1 : 0),
@@ -188,14 +222,19 @@ export default defineComponent({
 
     returnToLevelSelect() {
       this.$emit("completed");
-      let parsedJson = JSON.parse(localStorage.getItem("completedLevels") || "{}");
-      parsedJson[this.levelIndex] = true;
-      localStorage.setItem("completedLevels", JSON.stringify(parsedJson));
     },
 
     restart() {
       this.$emit("restart");
     },
+
+    promptRestart(){
+      let confirmation = confirm("Confirm restart?");
+
+      if(confirmation){
+        this.$emit("restart");
+      }
+    }
   },
   components: {
     StringSymbol,
