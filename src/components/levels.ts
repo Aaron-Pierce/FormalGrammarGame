@@ -149,18 +149,23 @@ let Level11: LevelObject = {
 
 let Level12: LevelObject = {
     startString: "S",
-    targetString: "baaaab",
+    targetString: "bbababbab",
     productionStrings: [
-        ["S", "SS"],
-        ["S", "A"],
-        ["S", "B"],
-        ["S", ""],
-        ["A", "aAb"],
-        ["A", "bAa"],
-        ["A", "S"],
-        ["B", "aBa"],
-        ["B", "bBb"],
-        ["B", "S"],
+        ["S", "SaS"],
+        ["S", "bS"],
+        ["S", "Sb"],
+        ["S", "ba"],
+    ]
+}
+
+let Level13: LevelObject = {
+    startString: "S",
+    targetString: "aabaaababaabaaa",
+    productionStrings: [
+        ["S", "AS"],
+        ["S", "a"],
+        ["A", "b"],
+        ["A", "aAa"],
     ]
 }
 
@@ -178,6 +183,7 @@ const Levels = [
     Level10,
     Level11,
     Level12,
+    Level13
 ]
 
 export {
