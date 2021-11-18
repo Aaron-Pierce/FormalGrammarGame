@@ -191,9 +191,9 @@ export default defineComponent({
       activeProductionIndex: -1,
       productions: formatProductionStrings([
         ["S", "X"],
-        ["X", "xX"],
+        ["X", "[X, X, X]"],
       ]),
-      targetString: "A Bird",
+      targetString: "A Cool Circle Thing",
       activatedCanvas: false,
       completed: false,
       numberOfLines: 0,
@@ -215,156 +215,86 @@ export default defineComponent({
             this.list.splice(index + i, 0, symbolsToInsert[i]);
           }
 
-          let strokeLine = () => {
-            let ctx = (
-              document.getElementById("canvas") as HTMLCanvasElement
-            ).getContext("2d");
-            if (ctx === null) return;
-            ctx.beginPath();
-            ctx.moveTo(
-              500 +
-                500 *
-                  ((3 / 2) *
-                    Math.sin(
-                      (2 * Math.PI * this.numberOfLines) / 500 + Math.PI / 3
-                    ) **
-                      7),
-              500 +
-                -500 *
-                  ((1 / 4) *
-                    Math.cos((6 * Math.PI * this.numberOfLines) / 500) ** 2)
-            );
+          let ctx = (
+            document.getElementById("canvas") as HTMLCanvasElement
+          ).getContext("2d");
+          ctx?.clearRect(0, 0, 1000, 1000);
 
-            ctx.lineTo(
-              500 +
-                400 *
-                  ((1 / 5) *
-                    Math.sin(
-                      (6 * Math.PI * this.numberOfLines) / 500 + Math.PI / 5
-                    )),
-              500 +
-                400 *
-                  ((2 / 3) *
-                    Math.sin(
-                      (2 * Math.PI * this.numberOfLines) / 500 - Math.PI / 3
-                    ) **
-                      2)
-            );
-
-            ctx.stroke();
-          };
+          function draw(
+            el: boolean | boolean[],
+            originX: number,
+            originY: number,
+            size: number
+          ) {
+            if (el === true || el === false) {
+              //el will never be false, only to satisfy typescript
+              ctx?.beginPath();
+              ctx?.ellipse(originX, originY, size, size, 0, 0, 7);
+              ctx?.stroke();
+            } else {
+              for (let i = 0; i < 3; i++) {
+                draw(
+                  el[i],
+                  originX +
+                    0.58 *
+                      size *
+                      Math.cos((2 * Math.PI * i) / 3 - 1.17 * Math.PI),
+                  originY +
+                    0.58 *
+                      size *
+                      Math.sin((2 * Math.PI * i) / 3 - 1.17 * Math.PI),
+                  size / 2
+                );
+              }
+            }
+          }
 
           if (this.activeProductionIndex === 0) {
             this.activatedCanvas = true;
+            let tree = JSON.parse(
+              this.list
+                .map((e) => (e.character === "X" ? "true" : e.character))
+                .join("")
+            );
+            console.log(tree);
+
+            draw(tree, 500, 500, 400);
           } else if (this.activeProductionIndex === 1) {
             console.log("running 1");
             this.numberOfLines++;
 
-            strokeLine();
+            // if (this.numberOfLines == 3) {
+            //   this.productions.push(
+            //     ...formatProductionStrings([["X", "500X"]])
+            //   );
+            // }
 
-            if (this.numberOfLines == 3) {
-              this.productions.push(
-                ...formatProductionStrings([["X", "500X"]])
+            let tree = JSON.parse(
+              this.list
+                .map((e) => (e.character === "X" ? "true" : e.character))
+                .join("")
+            );
+            console.log(tree);
+
+            draw(tree, 500, 500, 400);
+
+            if (this.numberOfLines > 10) {
+              // this.$emit("completed");
+
+              this.completed = true;
+
+              let parsedJson = JSON.parse(
+                localStorage.getItem("completedLevels") || "{}"
+              );
+              parsedJson[this.levelIndex] = true;
+              localStorage.setItem(
+                "completedLevels",
+                JSON.stringify(parsedJson)
               );
             }
           } else if (this.activeProductionIndex === 2) {
-            let i = 0;
-            let int = setInterval(() => {
-              i++;
-              this.numberOfLines++;
-              strokeLine();
-
-              if (i === 500) {
-                this.completed = true;
-                clearInterval(int);
-                this.activeProductionIndex = -1;
-                let frameCount = 0;
-                function animate() {
-                  let ctx = (
-                    document.getElementById("canvas") as HTMLCanvasElement
-                  ).getContext("2d");
-                  if (ctx === null) return;
-
-                  ctx.clearRect(0, 0, 1000, 1000);
-
-                  for (let i = 1; i <= 500; i++) {
-                    ctx.beginPath();
-                    ctx.moveTo(
-                      500 +
-                        500 *
-                          ((3 / 2) *
-                            Math.sin(
-                              (2 * Math.PI * i) / 500 +
-                                Math.PI / 3
-
-                            ) **
-                              7),
-                      500 +
-                        -500 *
-                          ((1 / 4) *
-                            Math.cos(
-                              (6 * Math.PI * i) / 500
-                                + frameCount/60
-
-                            ) **
-                              2)
-                    );
-
-                    ctx.lineTo(
-                      500 +
-                        400 *
-                          ((1 / 5) *
-                            Math.sin(
-                              (6 * Math.PI * i) / 500 +
-                                Math.PI / 5
-                            )),
-                      500 +
-                        400 *
-                          ((2 / 3) *
-                            Math.sin(
-                              (2 * Math.PI * i) / 500 -
-                                Math.PI / 3
-                                + frameCount/60
-
-                            ) **
-                              2)
-                    );
-
-                    ctx.stroke();
-                  }
-
-                  frameCount++;
-                  requestAnimationFrame(animate);
-                }
-
-              }
-            }, 2);
-            return;
           }
-
-          let newString = this.list.reduce(
-            (str, charObj) => str + charObj.character,
-            ""
-          );
-          if (newString == this.targetString) {
-            console.log("Constructed string successfully");
-            this.completed = true;
-
-            let parsedJson = JSON.parse(
-              localStorage.getItem("completedLevels") || "{}"
-            );
-            parsedJson[this.levelIndex] = true;
-            localStorage.setItem("completedLevels", JSON.stringify(parsedJson));
-          } else {
-            let numberOfNonTerminals = this.list.reduce(
-              (acc, el) => acc + (el.kind === "Nonterminal" ? 1 : 0),
-              0
-            );
-            if (numberOfNonTerminals === 0) {
-              this.failed = true;
-            }
-          }
-          this.activeProductionIndex = -1;
+          // this.activeProductionIndex = -1;
         }
       }
     },
