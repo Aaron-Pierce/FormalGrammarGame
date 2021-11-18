@@ -228,6 +228,7 @@ export default defineComponent({
           ) {
             if (el === true || el === false) {
               //el will never be false, only to satisfy typescript
+              if(ctx) ctx.lineWidth = 10/3;
               ctx?.beginPath();
               ctx?.ellipse(originX, originY, size, size, 0, 0, 7);
               ctx?.stroke();
