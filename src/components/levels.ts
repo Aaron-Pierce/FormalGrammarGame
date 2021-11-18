@@ -208,7 +208,6 @@ const Levels = [
     Level13,
     Level14,
     Level15,
-
 ]
 
 export {
