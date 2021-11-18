@@ -179,6 +179,19 @@ let Level14: LevelObject = {
     ]
 }
 
+
+let Level15: LevelObject = {
+    startString: "ABCD",
+    targetString: "Thank you for playing!",
+    productionStrings: [
+        ["A", "Thank "],
+        ["B", "you "],
+        ["C", "for "],
+        ["D", "playing!"],
+    ]
+}
+
+
 const Levels = [
     Level1,
     Level3,
@@ -194,6 +207,7 @@ const Levels = [
     Level12,
     Level13,
     Level14,
+    Level15,
 
 ]
 
