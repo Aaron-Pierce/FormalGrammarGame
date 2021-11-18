@@ -12,9 +12,10 @@
       </div>
     </div>
 
+
     <level
       :key="currentLevelIndex"
-      v-if="currentLevelIndex !== null"
+      v-if="currentLevelIndex !== null && currentLevelIndex !== 13"
       :startstring="Levels[currentLevelIndex].startString"
       :targetstring="Levels[currentLevelIndex].targetString"
       :productionstrings="Levels[currentLevelIndex].productionStrings"
@@ -23,6 +24,12 @@
       @restart="restartLevel"
     >
     </level>
+
+    <bird-level
+      v-if="currentLevelIndex === 13"
+      @completed="completedLevel"
+      @restart="restartLevel"
+    ></bird-level>
   </div>
 </template>
 
@@ -77,6 +84,7 @@
 import { defineComponent } from "vue";
 import { LevelObject, Levels } from "./levels";
 import Level from "./Level.vue";
+import BirdLevel from "./BirdLevel.vue";
 
 type LevelSelectData = {
   Levels: LevelObject[];
@@ -120,6 +128,7 @@ export default defineComponent({
 
   components: {
     Level,
+    BirdLevel,
   },
 });
 </script>
