@@ -13,11 +13,11 @@
       </p>
     </div>
     <button
-      id="returnToLevelSelect"
+      id="nextLevel"
       v-if="completed"
-      @click="returnToLevelSelect"
+      @click="nextLevel"
     >
-      Return to Level Select
+      Go to Next Level
     </button>
     <button id="restart" v-if="failed" @click="restart">Restart</button>
     <div id="targetStringWrapper">
@@ -52,10 +52,11 @@
         </span>
       </div>
     </div>
-      <p v-if="levelIndex === 0"> Click a button to activate a production rule, then click an appropriate symbol to apply it to</p>
+    <p v-if="levelIndex === 0"> Click a button to activate a production rule, then click one of the highlighted symbols in the string to apply it to.</p>
     <hr id="linkRowDivider" />
     <div id="linkRow">
       <button @click="returnToLevelSelect" class="dangerHover">Return To Level Select</button>
+      <p>Level {{levelIndex}}</p>
       <button @click="promptRestart" class="dangerHover">Restart</button>
     </div>
   </div>
@@ -77,10 +78,10 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+
 #linkRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-top: 2em;
 }
 
@@ -163,7 +164,7 @@ export default defineComponent({
   // type inference enabled
 
   props: ["startstring", "productionstrings", "targetstring", "levelIndex"],
-  emits: ["completed", "restart"],
+  emits: ["completed", "restart", "nextlevel"],
 
   data() {
     console.log(this.startstring, this.productionstrings, this.targetstring);
@@ -228,6 +229,10 @@ export default defineComponent({
 
     returnToLevelSelect() {
       this.$emit("completed");
+    },
+
+    nextLevel(){
+      this.$emit("nextlevel");
     },
 
     restart() {

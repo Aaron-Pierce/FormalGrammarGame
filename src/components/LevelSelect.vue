@@ -22,6 +22,7 @@
       :levelIndex="currentLevelIndex"
       @completed="completedLevel"
       @restart="restartLevel"
+      @nextlevel="nextLevel"
     >
     </level>
 
@@ -29,6 +30,7 @@
       v-if="currentLevelIndex === 13"
       @completed="completedLevel"
       @restart="restartLevel"
+      @nextlevel="nextLevel"
     ></bird-level>
   </div>
 </template>
@@ -106,6 +108,20 @@ export default defineComponent({
       console.log("loading", index);
       this.currentLevelIndex = index;
       console.log("Selected level: ", this.Levels[this.currentLevelIndex]);
+    },
+    nextLevel() {
+      if(this.currentLevelIndex !== null){
+        console.log("requested next level after ", this.currentLevelIndex);
+        if(this.currentLevelIndex === this.Levels.length - 1){
+          this.currentLevelIndex = null;
+          console.log("Requested next on last level, returning to level select");
+        }else{
+          this.currentLevelIndex++;
+          console.log("Selected level: ", this.Levels[this.currentLevelIndex]);
+        }
+      }else{
+        console.warn("Requested next level with no active level???")
+      }
     },
     completedLevel() {
       this.currentLevelIndex = null;

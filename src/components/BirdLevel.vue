@@ -22,9 +22,9 @@
     <button
       id="returnToLevelSelect"
       v-if="completed"
-      @click="returnToLevelSelect"
+      @click="nextLevel"
     >
-      Return to Level Select
+      Go to Next Level
     </button>
     <button id="restart" v-if="failed" @click="restart">Restart</button>
     <div id="targetStringWrapper">
@@ -180,7 +180,7 @@ import {
 export default defineComponent({
   // type inference enabled
 
-  emits: ["completed", "restart"],
+  emits: ["completed", "restart", "nextlevel"],
 
   data() {
     console.log(this.startstring, this.productionstrings, this.targetstring);
@@ -279,7 +279,7 @@ export default defineComponent({
 
             draw(tree, 500, 500, 400);
 
-            if (this.numberOfLines > 10) {
+            if (this.numberOfLines > 8) {
               // this.$emit("completed");
 
               this.completed = true;
@@ -312,6 +312,10 @@ export default defineComponent({
 
     restart() {
       this.$emit("restart");
+    },
+
+    nextLevel() {
+      this.$emit("nextlevel");
     },
 
     promptRestart() {
